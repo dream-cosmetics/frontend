@@ -1,0 +1,32 @@
+.sectionTitle{
+    width: fit-content;
+    margin: 0 auto 30px;
+    font-family: var(--font-poppins);
+    text-align: center;
+}
+.title{
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: var(--primaryText);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+.title::before{
+    content: url(../../images/bloom-l.svg);
+    margin-right: 10px;
+    display: inline-flex;
+}
+.title::after{
+    content: url(../../images/bloom-r.svg);
+    margin-left: 10px;
+    display: inline-flex;
+}
+.sectionTitle a{
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    color: var(--grayText);
+}
