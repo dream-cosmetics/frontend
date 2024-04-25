@@ -7,10 +7,16 @@ import {
     Typography,
     Box,
 } from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+
+import { useState } from "react";
 
 import CustomButton from "../CustomButton/CustomButton";
 
 export default function ProductCard({ image, name, rate, desc, price }) {
+
+    const [hovered, setHovered] = useState(false);
+
     return (
         <Card
             sx={{
@@ -22,9 +28,18 @@ export default function ProductCard({ image, name, rate, desc, price }) {
                 component="div"
                 disableRipple
                 onClick={(e) => {
-                    if (e.target.type != "button") {
-                        console.log("area");
+                    if (
+                        e.target.type != "button" &&
+                        e.target.tagName != "path"
+                    ) {
+                        console.log("Card click");
                     }
+                }}
+                onMouseOver={() => {
+                    setHovered(true);
+                }}
+                onMouseLeave={() => {
+                    setHovered(false);
                 }}
             >
                 <CardMedia image={`${image.src}`} component="img" />
@@ -43,6 +58,9 @@ export default function ProductCard({ image, name, rate, desc, price }) {
                             fontWeight: "500",
                             fontSize: "1rem",
                             lineHeight: "1.5",
+                            color: `${
+                                hovered ? "var(--primaryPink)" : "inherit"
+                            }`,
                         }}
                     >
                         {name}
@@ -90,9 +108,25 @@ export default function ProductCard({ image, name, rate, desc, price }) {
                         bgColor="transparent"
                         color="var(--primaryText)"
                         text="Add To Bag"
-                        handler={() => {console.log("button")}}
+                        handler={() => {
+                            console.log("button");
+                        }}
                     />
                 </CardContent>
+                <FavoriteIcon
+                    sx={{
+                        display: `${hovered ? "inline-block" : "none"}`,
+                        position: "absolute",
+                        top: "20px",
+                        right: "20px",
+                        zIndex: "9",
+                        color: "var(--heartColor)",
+                        ":hover": {color: "var(--primaryPink)"}
+                    }}
+                    onClick={()=>{
+                        console.log("Heart click");
+                    }}
+                />
             </CardActionArea>
         </Card>
     );

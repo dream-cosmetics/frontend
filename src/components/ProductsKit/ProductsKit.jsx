@@ -1,4 +1,3 @@
-"use client"
 import style from "./productsKit.module.css";
 import CustomButton from "../CustomButton/CustomButton";
 
@@ -14,20 +13,31 @@ export default function ProductsKit({side, product}){
                 <p>{product.desc}</p>
                 <div className={style.kitTags}>
                     {product.tags.map((tag, index) => {
-                        return <span key={index} className={style.tag}># {tag}</span>;
+                        return (
+                            <span key={index} className={style.tag}>
+                                # {tag}
+                            </span>
+                        );
                     })}
                 </div>
                 <div className={style.buttons}>
-                    <CustomButton width="40%" bgColor="var(--primaryPink)" color="#fff" text="Shop Now" handler={() => {
-                        console.log("Shop now");
-                    }}/>
+                    <CustomButton
+                        width="40%"
+                        bgColor="var(--primaryPink)"
+                        color="#fff"
+                        text="Shop Now"
+                        handler={() => {
+                            console.log("Shop now");
+                        }}
+                    />
                     <Link className={style.explore} href="/collection">
-                        Explore More <EastRoundedIcon sx={{fontSize: "0.875rem"}}/>
+                        Explore More{" "}
+                        <EastRoundedIcon sx={{ fontSize: "0.875rem" }} />
                     </Link>
                 </div>
             </div>
             <div className={style.kitImage}>
-                <img src={product.image.src} alt={product.name} />
+                <Image src={product.image.src} alt={product.name} width={1000} height={1000} style={{maxHeight: 500, width: "100%", objectFit: "cover"}}/>
             </div>
         </div>
     );

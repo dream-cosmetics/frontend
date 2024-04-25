@@ -1,3 +1,5 @@
+"use client"
+
 import ProductsKit from "../ProductsKit/ProductsKit";
 
 import prodImage from "@/images/product.png";
