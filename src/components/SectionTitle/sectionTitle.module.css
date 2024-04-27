@@ -30,3 +30,6 @@
     line-height: 1.5;
     color: var(--grayText);
 }
+.sectionTitle a:hover{
+    color: var(--primaryPink);
+}

@@ -1,6 +1,8 @@
+"use client"
+
 import { Button } from "@mui/material";
 
-export default function CustomButton({width, bgColor, color, text, handler}){
+export default function CustomButton({width, bgColor, color, text, handler, ...other}){
     return (
         <Button
             disableRipple
@@ -30,7 +32,10 @@ export default function CustomButton({width, bgColor, color, text, handler}){
                     border: "none",
                 },
             }}
-            onClick={handler}
+            onClick={async () => {
+                await handler();
+            }}
+            {...other}
         >
             {text}
         </Button>
